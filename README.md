@@ -1,54 +1,54 @@
-# Go Backend Developer Roadmap (2026)
+п»ї# Go Backend Developer Roadmap (2026)
 
-Автор: <Твоё имя>
+РђРІС‚РѕСЂ: <Igor Ivash>
 
-Цель: Получить работу Backend Developer (Golang)
+Р¦РµР»СЊ: РџРѕР»СѓС‡РёС‚СЊ СЂР°Р±РѕС‚Сѓ Backend Developer (Golang)
 
-Примерный срок: 6–12 месяцев интенсивного обучения.
+РџСЂРёРјРµСЂРЅС‹Р№ СЃСЂРѕРє: 6вЂ“12 РјРµСЃСЏС†РµРІ РёРЅС‚РµРЅСЃРёРІРЅРѕРіРѕ РѕР±СѓС‡РµРЅРёСЏ.
 
-Go широко используется для высоконагруженных backend-систем, микросервисов и cloud-инфраструктуры. :contentReference[oaicite:0]{index=0}
+Go С€РёСЂРѕРєРѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РІС‹СЃРѕРєРѕРЅР°РіСЂСѓР¶РµРЅРЅС‹С… backend-СЃРёСЃС‚РµРј, РјРёРєСЂРѕСЃРµСЂРІРёСЃРѕРІ Рё cloud-РёРЅС„СЂР°СЃС‚СЂСѓРєС‚СѓСЂС‹. :contentReference[oaicite:0]{index=0}
 
 ---
 
-# 1. Основы программирования
+# 1. РћСЃРЅРѕРІС‹ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ
 
-Если база слабая — начать отсюда.
+Р•СЃР»Рё Р±Р°Р·Р° СЃР»Р°Р±Р°СЏ вЂ” РЅР°С‡Р°С‚СЊ РѕС‚СЃСЋРґР°.
 
-## Что изучить
+## Р§С‚Рѕ РёР·СѓС‡РёС‚СЊ
 
-- алгоритмы
-- структуры данных
-- работа с памятью
+- Р°Р»РіРѕСЂРёС‚РјС‹
+- СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР°РЅРЅС‹С…
+- СЂР°Р±РѕС‚Р° СЃ РїР°РјСЏС‚СЊСЋ
 - Git
 - Linux basics
 
-## Курсы
+## РљСѓСЂСЃС‹
 
-### Видео
+### Р’РёРґРµРѕ
 - Backend Roadmap (YouTube)  
 https://www.youtube.com/watch?v=bPmwzlxH4ho
 
-### Курсы
+### РљСѓСЂСЃС‹
 
-1?? CS50 (Harvard)
+1пёЏ CS50 (Harvard)
 
 https://cs50.harvard.edu/
 
-2?? Git
+2пёЏ Git
 
 https://learngitbranching.js.org/
 
-3?? Linux
+3пёЏ Linux
 
 https://linuxjourney.com/
 
 ---
 
-# 2. Изучение Golang
+# 2. РР·СѓС‡РµРЅРёРµ Golang
 
-## Основы языка
+## РћСЃРЅРѕРІС‹ СЏР·С‹РєР°
 
-Изучить:
+РР·СѓС‡РёС‚СЊ:
 
 - variables
 - functions
@@ -59,32 +59,32 @@ https://linuxjourney.com/
 - packages
 - modules
 
-Go считается простым языком с мощной стандартной библиотекой и высокой производительностью. :contentReference[oaicite:1]{index=1}
+Go СЃС‡РёС‚Р°РµС‚СЃСЏ РїСЂРѕСЃС‚С‹Рј СЏР·С‹РєРѕРј СЃ РјРѕС‰РЅРѕР№ СЃС‚Р°РЅРґР°СЂС‚РЅРѕР№ Р±РёР±Р»РёРѕС‚РµРєРѕР№ Рё РІС‹СЃРѕРєРѕР№ РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊСЋ. :contentReference[oaicite:1]{index=1}
 
-## Лучшие курсы
+## Р›СѓС‡С€РёРµ РєСѓСЂСЃС‹
 
-### 1?? Лучший курс
+### 1пёЏ Р›СѓС‡С€РёР№ РєСѓСЂСЃ
 
 Boot.dev Go course  
 https://boot.dev/courses/learn-golang
 
-### 2?? YouTube
+### 2пёЏ YouTube
 
-Learn Go – Full Course
+Learn Go вЂ“ Full Course
 
 https://www.youtube.com/watch?v=YS4e4q9oBaU
 
-### 3?? Документация
+### 3пёЏ Р”РѕРєСѓРјРµРЅС‚Р°С†РёСЏ
 
 https://go.dev/doc/
 
 ---
 
-# 3. Concurrency (очень важно)
+# 3. Concurrency (РѕС‡РµРЅСЊ РІР°Р¶РЅРѕ)
 
-Go славится своей моделью конкурентности.
+Go СЃР»Р°РІРёС‚СЃСЏ СЃРІРѕРµР№ РјРѕРґРµР»СЊСЋ РєРѕРЅРєСѓСЂРµРЅС‚РЅРѕСЃС‚Рё.
 
-Изучить:
+РР·СѓС‡РёС‚СЊ:
 
 - goroutines
 - channels
@@ -92,27 +92,27 @@ Go славится своей моделью конкурентности.
 - mutex
 - race conditions
 
-Практика:
+РџСЂР°РєС‚РёРєР°:
 
 - worker pools
 - concurrent pipelines
 
 ---
 
-# 4. Backend разработка на Go
+# 4. Backend СЂР°Р·СЂР°Р±РѕС‚РєР° РЅР° Go
 
-Теперь начинаем писать backend.
+РўРµРїРµСЂСЊ РЅР°С‡РёРЅР°РµРј РїРёСЃР°С‚СЊ backend.
 
 ## Web frameworks
 
-Самые популярные:
+РЎР°РјС‹Рµ РїРѕРїСѓР»СЏСЂРЅС‹Рµ:
 
 - Gin
 - Echo
 - Fiber
 - Chi
 
-Начни с:
+РќР°С‡РЅРё СЃ:
 
 Gin
 
@@ -120,9 +120,9 @@ https://github.com/gin-gonic/gin
 
 ---
 
-# 5. API разработка
+# 5. API СЂР°Р·СЂР°Р±РѕС‚РєР°
 
-Изучить:
+РР·СѓС‡РёС‚СЊ:
 
 - REST
 - JSON
@@ -130,9 +130,9 @@ https://github.com/gin-gonic/gin
 - Middleware
 - Validation
 
-Практика:
+РџСЂР°РєС‚РёРєР°:
 
-Создать:
+РЎРѕР·РґР°С‚СЊ:
 
 - CRUD API
 - authentication
@@ -141,11 +141,11 @@ https://github.com/gin-gonic/gin
 
 ---
 
-# 6. Базы данных
+# 6. Р‘Р°Р·С‹ РґР°РЅРЅС‹С…
 
 ## SQL
 
-Изучить:
+РР·СѓС‡РёС‚СЊ:
 
 - PostgreSQL
 - indexes
@@ -157,18 +157,18 @@ https://github.com/gin-gonic/gin
 - GORM
 - sqlx
 
-## Практика
+## РџСЂР°РєС‚РёРєР°
 
-Сделать:
+РЎРґРµР»Р°С‚СЊ:
 
 - user service
 - order service
 
 ---
 
-# 7. Архитектура backend
+# 7. РђСЂС…РёС‚РµРєС‚СѓСЂР° backend
 
-Изучить:
+РР·СѓС‡РёС‚СЊ:
 
 - clean architecture
 - hexagonal architecture
@@ -178,7 +178,7 @@ https://github.com/gin-gonic/gin
 
 # 8. Microservices
 
-Изучить:
+РР·СѓС‡РёС‚СЊ:
 
 - gRPC
 - message queues
@@ -187,13 +187,13 @@ https://github.com/gin-gonic/gin
 
 ---
 
-# 9. DevOps для backend
+# 9. DevOps РґР»СЏ backend
 
-Необходимые навыки:
+РќРµРѕР±С…РѕРґРёРјС‹Рµ РЅР°РІС‹РєРё:
 
 - Docker
 - CI/CD
-- Kubernetes (база)
+- Kubernetes (Р±Р°Р·Р°)
 - Nginx
 - cloud deployment
 
@@ -201,19 +201,19 @@ https://github.com/gin-gonic/gin
 
 # 10. Testing
 
-Изучить:
+РР·СѓС‡РёС‚СЊ:
 
 - unit tests
 - integration tests
 - mocking
 
-Go имеет встроенный пакет testing.
+Go РёРјРµРµС‚ РІСЃС‚СЂРѕРµРЅРЅС‹Р№ РїР°РєРµС‚ testing.
 
 ---
 
 # 11. System Design
 
-Изучить:
+РР·СѓС‡РёС‚СЊ:
 
 - load balancing
 - caching
@@ -222,9 +222,9 @@ Go имеет встроенный пакет testing.
 
 ---
 
-# 12. Портфолио (очень важно)
+# 12. РџРѕСЂС‚С„РѕР»РёРѕ (РѕС‡РµРЅСЊ РІР°Р¶РЅРѕ)
 
-Минимум 4 проекта.
+РњРёРЅРёРјСѓРј 4 РїСЂРѕРµРєС‚Р°.
 
 ## 1. URL Shortener
 
@@ -234,7 +234,7 @@ Stack:
 - Redis
 - PostgreSQL
 
-Функции:
+Р¤СѓРЅРєС†РёРё:
 
 - shorten URL
 - statistics
@@ -250,7 +250,7 @@ Stack:
 - JWT
 - PostgreSQL
 
-Функции:
+Р¤СѓРЅРєС†РёРё:
 
 - login
 - register
@@ -279,15 +279,15 @@ Stack:
 
 ---
 
-# 13. Подготовка к работе
+# 13. РџРѕРґРіРѕС‚РѕРІРєР° Рє СЂР°Р±РѕС‚Рµ
 
-## Алгоритмы
+## РђР»РіРѕСЂРёС‚РјС‹
 
 LeetCode
 
 https://leetcode.com
 
-## Go interview вопросы
+## Go interview РІРѕРїСЂРѕСЃС‹
 
 - goroutines vs threads
 - channels
@@ -296,9 +296,9 @@ https://leetcode.com
 
 ---
 
-# 14. Компании где используют Go
+# 14. РљРѕРјРїР°РЅРёРё РіРґРµ РёСЃРїРѕР»СЊР·СѓСЋС‚ Go
 
-## Международные
+## РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ
 
 - Google
 - Uber
@@ -310,11 +310,11 @@ https://leetcode.com
 
 ---
 
-# 15. Компании в Беларуси
+# 15. РљРѕРјРїР°РЅРёРё РІ Р‘РµР»Р°СЂСѓСЃРё
 
-Многие компании используют Go в backend и fintech.
+РњРЅРѕРіРёРµ РєРѕРјРїР°РЅРёРё РёСЃРїРѕР»СЊР·СѓСЋС‚ Go РІ backend Рё fintech.
 
-### Примеры
+### РџСЂРёРјРµСЂС‹
 
 - EPAM
 - Wargaming
@@ -324,15 +324,15 @@ https://leetcode.com
 - Gismart
 - IDT
 
-Некоторые компании ищут Go разработчиков и даже стажёров, например IDT публиковала вакансии Golang-intern в Минске. :contentReference[oaicite:2]{index=2}
+РќРµРєРѕС‚РѕСЂС‹Рµ РєРѕРјРїР°РЅРёРё РёС‰СѓС‚ Go СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ Рё РґР°Р¶Рµ СЃС‚Р°Р¶С‘СЂРѕРІ, РЅР°РїСЂРёРјРµСЂ IDT РїСѓР±Р»РёРєРѕРІР°Р»Р° РІР°РєР°РЅСЃРёРё Golang-intern РІ РњРёРЅСЃРєРµ. :contentReference[oaicite:2]{index=2}
 
-Также есть remote вакансии Go developer в международных компаниях. :contentReference[oaicite:3]{index=3}
+РўР°РєР¶Рµ РµСЃС‚СЊ remote РІР°РєР°РЅСЃРёРё Go developer РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅС‹С… РєРѕРјРїР°РЅРёСЏС…. :contentReference[oaicite:3]{index=3}
 
 ---
 
-# 16. Где искать работу
+# 16. Р“РґРµ РёСЃРєР°С‚СЊ СЂР°Р±РѕС‚Сѓ
 
-## Сайты
+## РЎР°Р№С‚С‹
 
 LinkedIn  
 https://linkedin.com
@@ -348,40 +348,40 @@ https://golang.cafe
 
 ---
 
-# 17. План обучения (пример)
+# 17. РџР»Р°РЅ РѕР±СѓС‡РµРЅРёСЏ (РїСЂРёРјРµСЂ)
 
-## Месяц 1–2
+## РњРµСЃСЏС† 1вЂ“2
 
 - Go basics
-- алгоритмы
+- Р°Р»РіРѕСЂРёС‚РјС‹
 - Git
 
-## Месяц 3–4
+## РњРµСЃСЏС† 3вЂ“4
 
 - backend
 - REST API
 - PostgreSQL
 
-## Месяц 5–6
+## РњРµСЃСЏС† 5вЂ“6
 
 - microservices
 - Docker
-- проекты
+- РїСЂРѕРµРєС‚С‹
 
-## Месяц 7+
+## РњРµСЃСЏС† 7+
 
 - system design
-- подготовка к интервью
-- поиск работы
+- РїРѕРґРіРѕС‚РѕРІРєР° Рє РёРЅС‚РµСЂРІСЊСЋ
+- РїРѕРёСЃРє СЂР°Р±РѕС‚С‹
 
 ---
 
-# 18. Пример резюме
+# 18. РџСЂРёРјРµСЂ СЂРµР·СЋРјРµ
 
 ## Golang Backend Developer
 
-Имя: <Имя>  
-Email: <email>  
+РРјСЏ: <Igor>  
+Email: <igorivash12@gmail>  
 GitHub: <github>  
 LinkedIn: <linkedin>
 
@@ -417,13 +417,13 @@ DevOps
 
 ### URL Shortener
 
-Backend сервис для сокращения ссылок.
+Backend СЃРµСЂРІРёСЃ РґР»СЏ СЃРѕРєСЂР°С‰РµРЅРёСЏ СЃСЃС‹Р»РѕРє.
 
 Stack:
 
 Go, Redis, PostgreSQL
 
-Функции:
+Р¤СѓРЅРєС†РёРё:
 
 - shorten URL
 - analytics
@@ -446,22 +446,22 @@ Go, PostgreSQL, Docker
 
 ## Education
 
-<университет>
+<СѓРЅРёРІРµСЂСЃРёС‚РµС‚>
 
 ---
 
 ## Languages
 
-English — B1/B2
-Russian — Native
+English вЂ” B1/B2
+Russian вЂ” Native
 
 ---
 
-# 19. GitHub который нужен для работы
+# 19. GitHub РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РµРЅ РґР»СЏ СЂР°Р±РѕС‚С‹
 
-Обязательно иметь:
+РћР±СЏР·Р°С‚РµР»СЊРЅРѕ РёРјРµС‚СЊ:
 
-- 4–6 backend проектов
+- 4вЂ“6 backend РїСЂРѕРµРєС‚РѕРІ
 - clean architecture
 - README
 - Docker
