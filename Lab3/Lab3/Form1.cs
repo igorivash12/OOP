@@ -80,13 +80,13 @@ namespace Lab3
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            TextSerializer.Save("data.txt", items);
+            JsonSerializerService.Save("data.json", items);
             MessageBox.Show("Saved!");
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            items = TextSerializer.Load("data.txt");
+            items = JsonSerializerService.Load("data.json");
             UpdateList();
             MessageBox.Show("Loaded!");
         }
