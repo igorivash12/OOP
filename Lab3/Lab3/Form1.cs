@@ -1,9 +1,8 @@
-﻿using Lab3.Models;
-using Lab3.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Xml.Linq;
+using Lab3.Models;
+using Lab3.Services;
 
 namespace Lab3
 {
@@ -16,113 +15,19 @@ namespace Lab3
             InitializeComponent();
         }
 
-        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+        // Sets labels for dynamic fields
+        public void SetLabels(string l1, string l2)
         {
-            string type = cmbType.SelectedItem.ToString();
-
-            switch (type)
-            {
-                case "PCGame":
-                    lblExtra1.Text = "Platform:";
-                    lblExtra2.Text = "RAM (GB):";
-                    break;
-
-                case "ConsoleGame":
-                    lblExtra1.Text = "Console:";
-                    lblExtra2.Text = "Max Players:";
-                    break;
-
-                case "MobileGame":
-                    lblExtra1.Text = "OS:";
-                    lblExtra2.Text = "Has Ads:";
-                    break;
-
-                case "OnlineGame":
-                    lblExtra1.Text = "Servers:";
-                    lblExtra2.Text = "Subscription:";
-                    break;
-
-                case "IndieGame":
-                    lblExtra1.Text = "Studio:";
-                    lblExtra2.Text = "Team Size:";
-                    break;
-
-                case "VRGame":
-                    lblExtra1.Text = "VR Device:";
-                    lblExtra2.Text = "Controllers:";
-                    break;
-            }
+            lblExtra1.Text = l1;
+            lblExtra2.Text = l2;
         }
 
+        // Creates object using factory and fills it from form
         private BaseEntity CreateFromInput()
         {
-            string type = cmbType.SelectedItem.ToString();
-
-            switch (type)
-            {
-                case "PCGame":
-                    return new PCGame
-                    {
-                        Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text),
-                        Genre = txtGenre.Text,
-                        Platform = txtExtra1.Text,
-                        RequiredRAM = int.Parse(txtExtra2.Text)
-                    };
-
-                case "ConsoleGame":
-                    return new ConsoleGame
-                    {
-                        Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text),
-                        Genre = txtGenre.Text,
-                        Console = txtExtra1.Text,
-                        MaxPlayers = int.Parse(txtExtra2.Text)
-                    };
-
-                case "MobileGame":
-                    return new MobileGame
-                    {
-                        Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text),
-                        Genre = txtGenre.Text,
-                        OS = txtExtra1.Text,
-                        HasAds = bool.Parse(txtExtra2.Text)
-                    };
-
-                case "OnlineGame":
-                    return new OnlineGame
-                    {
-                        Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text),
-                        Genre = txtGenre.Text,
-                        ServerCount = int.Parse(txtExtra1.Text),
-                        Subscription = bool.Parse(txtExtra2.Text)
-                    };
-
-                case "IndieGame":
-                    return new IndieGame
-                    {
-                        Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text),
-                        Genre = txtGenre.Text,
-                        Studio = txtExtra1.Text,
-                        TeamSize = int.Parse(txtExtra2.Text)
-                    };
-
-                case "VRGame":
-                    return new VRGame
-                    {
-                        Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text),
-                        Genre = txtGenre.Text,
-                        VRDevice = txtExtra1.Text,
-                        RequiresControllers = bool.Parse(txtExtra2.Text)
-                    };
-
-                default:
-                    throw new Exception();
-            }
+            var obj = GameFactory.Create(cmbType.SelectedItem.ToString());
+            obj.FillFromForm(this);
+            return obj;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -134,7 +39,7 @@ namespace Lab3
             }
             catch
             {
-                MessageBox.Show("Invalid input!");
+                MessageBox.Show("Invalid input");
             }
         }
 
@@ -142,7 +47,7 @@ namespace Lab3
         {
             if (listBox1.SelectedIndex < 0)
             {
-                MessageBox.Show("Select item to update!");
+                MessageBox.Show("Select item");
                 return;
             }
 
@@ -153,7 +58,7 @@ namespace Lab3
             }
             catch
             {
-                MessageBox.Show("Invalid input!");
+                MessageBox.Show("Invalid input");
             }
         }
 
@@ -168,30 +73,26 @@ namespace Lab3
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            if (sfd.ShowDialog() == DialogResult.OK)
-                JsonSerializerService.Save("games.json", items);
+            JsonSerializerService.Save("games.json", items);
+            MessageBox.Show("Saved");
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == DialogResult.OK)
-                items = JsonSerializerService.Load("games.json");
+            items = JsonSerializerService.Load("games.json");
             UpdateList();
+            MessageBox.Show("Loaded");
         }
 
+        // Updates list display
         private void UpdateList()
         {
             listBox1.Items.Clear();
-
             foreach (var item in items)
-            {
                 listBox1.Items.Add(item.Name);
-            }
         }
 
-        // ✅ ВАЖНЫЙ МЕТОД (исправляет твою ошибку)
+        // Handles selection change in list
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex < 0)
@@ -199,56 +100,20 @@ namespace Lab3
 
             var item = items[listBox1.SelectedIndex];
 
-            txtName.Text = item.Name;
+            cmbType.SelectedItem = item.GetTypeName();
+            item.FillForm(this);
+        }
 
-            if (item is PCGame pc)
-            {
-                cmbType.SelectedItem = "PCGame";
-                txtPrice.Text = pc.Price.ToString();
-                txtGenre.Text = pc.Genre;
-                txtExtra1.Text = pc.Platform;
-                txtExtra2.Text = pc.RequiredRAM.ToString();
-            }
-            else if (item is ConsoleGame cg)
-            {
-                cmbType.SelectedItem = "ConsoleGame";
-                txtPrice.Text = cg.Price.ToString();
-                txtGenre.Text = cg.Genre;
-                txtExtra1.Text = cg.Console;
-                txtExtra2.Text = cg.MaxPlayers.ToString();
-            }
-            else if (item is MobileGame mg)
-            {
-                cmbType.SelectedItem = "MobileGame";
-                txtPrice.Text = mg.Price.ToString();
-                txtGenre.Text = mg.Genre;
-                txtExtra1.Text = mg.OS;
-                txtExtra2.Text = mg.HasAds.ToString();
-            }
-            else if (item is OnlineGame og)
-            {
-                cmbType.SelectedItem = "OnlineGame";
-                txtPrice.Text = og.Price.ToString();
-                txtGenre.Text = og.Genre;
-                txtExtra1.Text = og.ServerCount.ToString();
-                txtExtra2.Text = og.Subscription.ToString();
-            }
-            else if (item is IndieGame ig)
-            {
-                cmbType.SelectedItem = "IndieGame";
-                txtPrice.Text = ig.Price.ToString();
-                txtGenre.Text = ig.Genre;
-                txtExtra1.Text = ig.Studio;
-                txtExtra2.Text = ig.TeamSize.ToString();
-            }
-            else if (item is VRGame vr)
-            {
-                cmbType.SelectedItem = "VRGame";
-                txtPrice.Text = vr.Price.ToString();
-                txtGenre.Text = vr.Genre;
-                txtExtra1.Text = vr.VRDevice;
-                txtExtra2.Text = vr.RequiresControllers.ToString();
-            }
+        // Handles type change in ComboBox
+        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbType.SelectedItem == null)
+                return;
+
+            var obj = GameFactory.Create(cmbType.SelectedItem.ToString());
+
+            // Only update labels (fields may be empty)
+            obj.FillForm(this);
         }
     }
 }
