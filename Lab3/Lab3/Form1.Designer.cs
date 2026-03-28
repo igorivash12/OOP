@@ -6,14 +6,16 @@
 
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Label lblExtra;
-        private System.Windows.Forms.Label lblBrand;
+        private System.Windows.Forms.Label lblGenre;
         private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label lblExtra1;
+        private System.Windows.Forms.Label lblExtra2;
 
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.TextBox txtExtra;
-        private System.Windows.Forms.TextBox txtBrand;
+        private System.Windows.Forms.TextBox txtGenre;
+        private System.Windows.Forms.TextBox txtExtra1;
+        private System.Windows.Forms.TextBox txtExtra2;
 
         private System.Windows.Forms.ComboBox cmbType;
 
@@ -37,14 +39,16 @@
         {
             this.lblName = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.lblExtra = new System.Windows.Forms.Label();
-            this.lblBrand = new System.Windows.Forms.Label();
+            this.lblGenre = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
+            this.lblExtra1 = new System.Windows.Forms.Label();
+            this.lblExtra2 = new System.Windows.Forms.Label();
 
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.txtExtra = new System.Windows.Forms.TextBox();
-            this.txtBrand = new System.Windows.Forms.TextBox();
+            this.txtGenre = new System.Windows.Forms.TextBox();
+            this.txtExtra1 = new System.Windows.Forms.TextBox();
+            this.txtExtra2 = new System.Windows.Forms.TextBox();
 
             this.cmbType = new System.Windows.Forms.ComboBox();
 
@@ -67,17 +71,21 @@
             this.lblPrice.Text = "Price:";
             this.lblPrice.Location = new System.Drawing.Point(20, 40);
 
-            this.lblExtra.AutoSize = true;
-            this.lblExtra.Text = "Volume / Type:";
-            this.lblExtra.Location = new System.Drawing.Point(20, 70);
-
-            this.lblBrand.AutoSize = true;
-            this.lblBrand.Text = "Brand:";
-            this.lblBrand.Location = new System.Drawing.Point(20, 100);
+            this.lblGenre.AutoSize = true;
+            this.lblGenre.Text = "Genre:";
+            this.lblGenre.Location = new System.Drawing.Point(20, 70);
 
             this.lblType.AutoSize = true;
-            this.lblType.Text = "Product Type:";
-            this.lblType.Location = new System.Drawing.Point(20, 130);
+            this.lblType.Text = "Game Type:";
+            this.lblType.Location = new System.Drawing.Point(20, 100);
+
+            this.lblExtra1.AutoSize = true;
+            this.lblExtra1.Text = "Extra1:";
+            this.lblExtra1.Location = new System.Drawing.Point(20, 130);
+
+            this.lblExtra2.AutoSize = true;
+            this.lblExtra2.Text = "Extra2:";
+            this.lblExtra2.Location = new System.Drawing.Point(20, 160);
 
             // ===== TextBoxes =====
             this.txtName.Location = new System.Drawing.Point(140, 10);
@@ -86,67 +94,76 @@
             this.txtPrice.Location = new System.Drawing.Point(140, 40);
             this.txtPrice.Size = new System.Drawing.Size(150, 23);
 
-            this.txtExtra.Location = new System.Drawing.Point(140, 70);
-            this.txtExtra.Size = new System.Drawing.Size(150, 23);
+            this.txtGenre.Location = new System.Drawing.Point(140, 70);
+            this.txtGenre.Size = new System.Drawing.Size(150, 23);
 
-            this.txtBrand.Location = new System.Drawing.Point(140, 100);
-            this.txtBrand.Size = new System.Drawing.Size(150, 23);
+            this.txtExtra1.Location = new System.Drawing.Point(140, 130);
+            this.txtExtra1.Size = new System.Drawing.Size(150, 23);
+
+            this.txtExtra2.Location = new System.Drawing.Point(140, 160);
+            this.txtExtra2.Size = new System.Drawing.Size(150, 23);
 
             // ===== ComboBox =====
-            this.cmbType.Location = new System.Drawing.Point(140, 130);
+            this.cmbType.Location = new System.Drawing.Point(140, 100);
             this.cmbType.Size = new System.Drawing.Size(150, 23);
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.Items.AddRange(new object[] {
-                "LuxuryPerfume",
-                "BudgetPerfume",
-                "Cosmetic"
+                "PCGame",
+                "ConsoleGame",
+                "MobileGame",
+                "OnlineGame",
+                "IndieGame",
+                "VRGame"
             });
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
 
             // ===== Buttons =====
             this.btnAdd.Location = new System.Drawing.Point(320, 10);
-            this.btnAdd.Size = new System.Drawing.Size(80, 25);
+            this.btnAdd.Size = new System.Drawing.Size(90, 25);
             this.btnAdd.Text = "Add";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 
             this.btnUpdate.Location = new System.Drawing.Point(320, 40);
-            this.btnUpdate.Size = new System.Drawing.Size(80, 25);
+            this.btnUpdate.Size = new System.Drawing.Size(90, 25);
             this.btnUpdate.Text = "Update";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
 
             this.btnDelete.Location = new System.Drawing.Point(320, 70);
-            this.btnDelete.Size = new System.Drawing.Size(80, 25);
+            this.btnDelete.Size = new System.Drawing.Size(90, 25);
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 
             this.btnSave.Location = new System.Drawing.Point(320, 100);
-            this.btnSave.Size = new System.Drawing.Size(80, 25);
+            this.btnSave.Size = new System.Drawing.Size(90, 25);
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 
             this.btnLoad.Location = new System.Drawing.Point(320, 130);
-            this.btnLoad.Size = new System.Drawing.Size(80, 25);
+            this.btnLoad.Size = new System.Drawing.Size(90, 25);
             this.btnLoad.Text = "Load";
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
 
             // ===== ListBox =====
-            this.listBox1.Location = new System.Drawing.Point(20, 170);
-            this.listBox1.Size = new System.Drawing.Size(380, 150);
+            this.listBox1.Location = new System.Drawing.Point(20, 200);
+            this.listBox1.Size = new System.Drawing.Size(390, 150);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
 
             // ===== Form =====
-            this.ClientSize = new System.Drawing.Size(430, 340);
-            this.Text = "Lab3 - Serialization App";
+            this.ClientSize = new System.Drawing.Size(450, 370);
+            this.Text = "Lab3 - Game Library";
 
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblPrice);
-            this.Controls.Add(this.lblExtra);
-            this.Controls.Add(this.lblBrand);
+            this.Controls.Add(this.lblGenre);
             this.Controls.Add(this.lblType);
+            this.Controls.Add(this.lblExtra1);
+            this.Controls.Add(this.lblExtra2);
 
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.txtExtra);
-            this.Controls.Add(this.txtBrand);
+            this.Controls.Add(this.txtGenre);
+            this.Controls.Add(this.txtExtra1);
+            this.Controls.Add(this.txtExtra2);
 
             this.Controls.Add(this.cmbType);
 

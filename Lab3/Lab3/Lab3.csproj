@@ -56,11 +56,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseEntity.cs" />
-    <Compile Include="Models\BudgetPerfume.cs" />
-    <Compile Include="Models\Cosmetic.cs" />
-    <Compile Include="Models\LuxuryPerfume.cs" />
-    <Compile Include="Models\Perfume.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\IndieGame.cs" />
+    <Compile Include="Models\PCGame.cs" />
+    <Compile Include="Models\MobileGame.cs" />
+    <Compile Include="Models\ConsoleGame.cs" />
+    <Compile Include="Models\OnlineGame.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\VRGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\JsonSerializer.cs" />
