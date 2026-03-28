@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Lab2.Shapes1
 {
-    // Circle shape class
-    public class CircleShape : Shape
+    public class ArcShape : Shape
     {
-        public CircleShape(Point start, Point end)
+        public ArcShape(Point start, Point end)
             : base(start, end)
         {
         }
 
         public override void Draw(Graphics g)
         {
-            g.DrawEllipse(Pens.Blue, GetBoundingRectangle());
+            Rectangle r = NormalizeMinimumSize(GetBoundingRectangle());
+            g.DrawArc(Pens.Magenta, r, 0f, 180f);
         }
     }
 }

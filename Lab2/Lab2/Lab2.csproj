@@ -55,11 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rendering\ShapeRender.cs" />
-    <Compile Include="Shapes1\CircleShape.cs" />
-    <Compile Include="Shapes1\LineShape.cs" />
-    <Compile Include="Shapes1\RectangleShape.cs" />
-    <Compile Include="Shapes1\Shape.cs" />
+    <Compile Include="Shapes1\*.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

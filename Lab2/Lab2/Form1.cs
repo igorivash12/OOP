@@ -1,5 +1,4 @@
-﻿using Lab2.Factory;
-using Lab2.Rendering;
+using Lab2.Factory;
 using Lab2.Shapes1;
 using System;
 using System.Collections.Generic;
@@ -14,11 +13,8 @@ namespace Lab2
         // List storing all drawn shapes
         private List<Shape> shapes = new List<Shape>();
 
-        // Factory for creating shapes
+        // Factory — shape types are loaded from the assembly automatically
         private ShapeFactory factory = new ShapeFactory();
-
-        // Renderer responsible for drawing shapes
-        private ShapeRenderer renderer = new ShapeRenderer();
 
         // Starting mouse point
         private Point startPoint;
@@ -33,13 +29,9 @@ namespace Lab2
         {
             InitializeComponent();
 
-            // Register shapes
-            factory.Register("Rectangle", (s, e) => new RectangleShape(s, e));
-            factory.Register("Circle", (s, e) => new CircleShape(s, e));
-            factory.Register("Line", (s, e) => new LineShape(s, e));
-
             comboBoxShapes.Items.AddRange(factory.GetShapeNames().ToArray());
-            comboBoxShapes.SelectedIndex = 0;
+            if (comboBoxShapes.Items.Count > 0)
+                comboBoxShapes.SelectedIndex = 0;
         }
 
         // Mouse pressed
@@ -89,12 +81,12 @@ namespace Lab2
         {
             foreach (var shape in shapes)
             {
-                renderer.Draw(e.Graphics, shape);
+                shape.Draw(e.Graphics);
             }
 
             if (previewShape != null)
             {
-                renderer.Draw(e.Graphics, previewShape);
+                previewShape.Draw(e.Graphics);
             }
         }
 

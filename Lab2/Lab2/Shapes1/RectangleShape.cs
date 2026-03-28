@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -13,6 +13,11 @@ namespace Lab2.Shapes1
         public RectangleShape(Point start, Point end)
             : base(start, end)
         {
+        }
+
+        public override void Draw(Graphics g)
+        {
+            g.DrawRectangle(Pens.Black, GetBoundingRectangle());
         }
     }
 }
