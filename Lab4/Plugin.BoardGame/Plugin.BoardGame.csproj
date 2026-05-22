@@ -36,6 +36,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcadeGame.cs" />
+    <Compile Include="ArcadeGamePlugin.cs" />
     <Compile Include="BoardGame.cs" />
     <Compile Include="BoardGamePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
