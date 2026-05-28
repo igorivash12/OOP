@@ -4,19 +4,12 @@ using Lab5.Plugins;
 namespace Plugin.BoardGame
 {
     /// <summary>
-    /// Registers the BoardGame type with the host application plugin loader.
+    /// Entry point for the board-game plugin module loaded by PluginLoader.
     /// </summary>
     public class BoardGamePlugin : IGamePlugin
     {
-        public string TypeKey
-        {
-            get { return "BoardGame"; }
-        }
-
-        public string DisplayName
-        {
-            get { return "Board Game (plugin)"; }
-        }
+        public string TypeKey     => "BoardGame";
+        public string DisplayName => "Board Game (plugin)";
 
         /// <summary>Factory method invoked by the host application.</summary>
         public BaseEntity CreateInstance()

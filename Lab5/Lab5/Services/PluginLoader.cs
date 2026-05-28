@@ -10,23 +10,28 @@ using Lab5.Plugins;
 namespace Lab5.Services
 {
     /// <summary>
-    /// Discovers and loads plugin assemblies from the Plugins folder or a command-line path.
+    /// Discovers and loads plugin assemblies from the Plugins folder or a user-selected path.
+    /// Handles both IGamePlugin (game-type registration) and IXmlPlugin (XML processing pipeline).
     /// </summary>
     public static class PluginLoader
     {
-        private static readonly HashSet<string> LoadedAssemblyPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private static readonly HashSet<string> LoadedAssemblyPaths =
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>Folder name relative to the executable directory.</summary>
         public const string PluginsFolderName = "Plugins";
 
+        // ── Startup ───────────────────────────────────────────────────────────
+
         /// <summary>
         /// Initializes plugin loading. Call once at application startup before using GameFactory.
+        /// Also loads IXmlPlugin implementations into XmlPluginManager.
         /// </summary>
         /// <param name="args">Optional command-line arguments; first arg may name a specific plugin DLL.</param>
         public static void Initialize(string[] args)
         {
             string pluginsDirectory = GetPluginsDirectory();
-            EnsurePluginsDirectoryExists(pluginsDirectory);
+            EnsureDirectoryExists(pluginsDirectory);
 
             if (args != null && args.Length > 0 && !string.IsNullOrWhiteSpace(args[0]))
             {
@@ -36,6 +41,9 @@ namespace Lab5.Services
             {
                 LoadAllPluginsFromDirectory(pluginsDirectory, showSummary: false);
             }
+
+            // Separately register XML plugins from the same directory
+            XmlPluginManager.LoadFromDirectory(pluginsDirectory);
         }
 
         /// <summary>Returns the absolute path to the Plugins directory next to the executable.</summary>
@@ -44,47 +52,39 @@ namespace Lab5.Services
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, PluginsFolderName);
         }
 
-        /// <summary>Reloads every plugin DLL from the Plugins folder (used by the UI reload button).</summary>
-        /// <returns>Total number of plugin types registered during this reload.</returns>
+        /// <summary>
+        /// Reloads every plugin DLL from the Plugins folder (used by the UI reload button).
+        /// Returns total number of IGamePlugin types registered during this reload.
+        /// </summary>
         public static int ReloadAll()
         {
             string pluginsDirectory = GetPluginsDirectory();
-            EnsurePluginsDirectoryExists(pluginsDirectory);
-            return LoadAllPluginsFromDirectory(pluginsDirectory, showSummary: true);
+            EnsureDirectoryExists(pluginsDirectory);
+
+            int count = LoadAllPluginsFromDirectory(pluginsDirectory, showSummary: false);
+
+            // Refresh XML plugins too
+            XmlPluginManager.LoadFromDirectory(pluginsDirectory);
+
+            MessageBox.Show(
+                string.Format("Reload complete. Registered {0} game plugin type(s).", count),
+                "Plugins",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            return count;
         }
 
+        // ── Internal helpers ──────────────────────────────────────────────────
+
         /// <summary>Creates the Plugins directory if it does not exist yet.</summary>
-        public static void EnsurePluginsDirectoryExists(string path)
+        private static void EnsureDirectoryExists(string path)
         {
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
         }
 
-        /// <summary>Opens a file dialog so the user can load a game-type plugin DLL.</summary>
-        public static int LoadFromFileDialog()
-        {
-            using (var dialog = new OpenFileDialog())
-            {
-                dialog.Title = "Select game plugin assembly";
-                dialog.Filter = "Plugin assemblies (*.dll)|*.dll|All files (*.*)|*.*";
-                dialog.InitialDirectory = GetPluginsDirectory();
-
-                if (dialog.ShowDialog() != DialogResult.OK)
-                    return 0;
-
-                return LoadAssemblyFile(dialog.FileName);
-            }
-        }
-
-        /// <summary>Skips host executable and NuGet dependencies when scanning the Plugins folder.</summary>
-        public static bool ShouldSkipHostOrDependency(string dllPath)
-        {
-            return ShouldSkipFile(dllPath);
-        }
-
-        /// <summary>
-        /// Loads a single plugin specified on the command line (file name or full path).
-        /// </summary>
+        /// <summary>Loads a single plugin specified on the command line (file name or full path).</summary>
         private static void LoadPluginFromArgument(string argument, string pluginsDirectory)
         {
             string dllPath = Path.IsPathRooted(argument)
@@ -108,7 +108,6 @@ namespace Lab5.Services
         }
 
         /// <summary>Loads every suitable DLL file from the given directory.</summary>
-        /// <returns>Number of plugin types successfully registered.</returns>
         private static int LoadAllPluginsFromDirectory(string pluginsDirectory, bool showSummary)
         {
             int totalTypes = 0;
@@ -121,15 +120,6 @@ namespace Lab5.Services
                 totalTypes += LoadAssemblyFile(dllPath);
             }
 
-            if (showSummary)
-            {
-                MessageBox.Show(
-                    string.Format("Reload complete. Registered {0} plugin type(s).", totalTypes),
-                    "Plugins",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-
             return totalTypes;
         }
 
@@ -137,6 +127,7 @@ namespace Lab5.Services
         private static bool ShouldSkipFile(string dllPath)
         {
             string fileName = Path.GetFileName(dllPath);
+
             if (fileName.Equals("Lab5.exe", StringComparison.OrdinalIgnoreCase) ||
                 fileName.Equals("Lab5.dll", StringComparison.OrdinalIgnoreCase))
                 return true;
@@ -148,7 +139,6 @@ namespace Lab5.Services
         }
 
         /// <summary>Loads one assembly and registers all IGamePlugin implementations found inside.</summary>
-        /// <returns>Number of types registered from this file.</returns>
         private static int LoadAssemblyFile(string dllPath)
         {
             if (LoadedAssemblyPaths.Contains(dllPath))
@@ -157,7 +147,7 @@ namespace Lab5.Services
             try
             {
                 Assembly assembly = Assembly.LoadFrom(dllPath);
-                IEnumerable<IGamePlugin> plugins = FindPluginsInAssembly(assembly);
+                IEnumerable<IGamePlugin> plugins = FindGamePluginsInAssembly(assembly);
 
                 int count = 0;
                 foreach (IGamePlugin plugin in plugins)
@@ -180,10 +170,8 @@ namespace Lab5.Services
             }
         }
 
-        /// <summary>
-        /// Instantiates every concrete type in the assembly that implements IGamePlugin.
-        /// </summary>
-        private static IEnumerable<IGamePlugin> FindPluginsInAssembly(Assembly assembly)
+        /// <summary>Instantiates every concrete type in the assembly that implements IGamePlugin.</summary>
+        private static IEnumerable<IGamePlugin> FindGamePluginsInAssembly(Assembly assembly)
         {
             Type pluginInterface = typeof(IGamePlugin);
             var result = new List<IGamePlugin>();

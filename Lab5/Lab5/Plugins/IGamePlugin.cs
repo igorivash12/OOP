@@ -5,6 +5,7 @@ namespace Lab5.Plugins
     /// <summary>
     /// Contract for dynamically loaded modules that extend the game hierarchy.
     /// Each plugin registers one entity type and its factory method.
+    /// Carried forward from Lab4 — all game-type plugins implement this interface.
     /// </summary>
     public interface IGamePlugin
     {

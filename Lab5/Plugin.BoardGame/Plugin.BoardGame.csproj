@@ -44,8 +44,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\Lab5\bin\$(ConfigurationName)\Plugins\" mkdir "$(ProjectDir)..\Lab5\bin\$(ConfigurationName)\Plugins\"
-copy /Y "$(TargetPath)" "$(ProjectDir)..\Lab5\bin\$(ConfigurationName)\Plugins\"
+    <PostBuildEvent>if not exist "$(SolutionDir)Lab5\bin\$(ConfigurationName)\Plugins\" mkdir "$(SolutionDir)Lab5\bin\$(ConfigurationName)\Plugins\"
+copy /Y "$(TargetPath)" "$(SolutionDir)Lab5\bin\$(ConfigurationName)\Plugins\"
 </PostBuildEvent>
   </PropertyGroup>
 </Project>

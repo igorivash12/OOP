@@ -1,5 +1,6 @@
 namespace Lab5.Models
 {
+    /// <summary>Represents a game released for a gaming console platform.</summary>
     public class ConsoleGame : Game
     {
         public string Console { get; set; }

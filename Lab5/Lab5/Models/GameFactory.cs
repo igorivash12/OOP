@@ -48,12 +48,12 @@ namespace Lab5.Models
         }
 
         /// <summary>
-        /// Registers a type provided by a dynamically loaded plugin module.
+        /// Registers a type provided by a dynamically loaded game plugin module.
         /// </summary>
         public static void RegisterPlugin(IGamePlugin plugin)
         {
             if (plugin == null)
-                throw new ArgumentNullException(nameof(plugin));
+                throw new ArgumentNullException("plugin");
 
             string typeKey = plugin.TypeKey;
             if (string.IsNullOrWhiteSpace(typeKey))

@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="Lab6.Core/Lab6.Core.csproj" Id="a1a1a1a1-0000-0000-0000-000000000006" />
+  <Project Path="lab6/lab6.csproj" Id="b1b1b1b1-0000-0000-0000-000000000006" />
+  <Project Path="HockeyPlugin/HockeyPlugin.csproj" Id="c1c1c1c1-0000-0000-0000-000000000004" />
+  <Project Path="EsportsPlugin/EsportsPlugin.csproj" Id="c2c2c2c2-0000-0000-0000-000000000004" />
+  <Project Path="ChecksumPlugin/ChecksumPlugin.csproj" Id="e3e3e3e3-0000-0000-0000-000000000005" />
+  <Project Path="FriendPlugin/FriendPlugin.csproj" Id="f1f1f1f1-0000-0000-0000-000000000006" />
+  <Project Path="FriendAdapterPlugin/FriendAdapterPlugin.csproj" Id="f2f2f2f2-0000-0000-0000-000000000006" />
+  <Project Path="PluginSigner/PluginSigner.csproj" Id="d1d1d1d1-0000-0000-0000-000000000004" />
+</Solution>

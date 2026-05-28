@@ -1,17 +1,18 @@
 namespace Lab5.Models
 {
+    /// <summary>Represents an independently developed game.</summary>
     public class IndieGame : Game
     {
-        public string Studio { get; set; }
-        public int TeamSize { get; set; }
+        public string Developer { get; set; }
+        public bool IsSoloProject { get; set; }
 
         public override void FillFromForm(Form1 form)
         {
             Name = form.txtName.Text;
             Price = double.Parse(form.txtPrice.Text);
             Genre = form.txtGenre.Text;
-            Studio = form.txtExtra1.Text;
-            TeamSize = int.Parse(form.txtExtra2.Text);
+            Developer = form.txtExtra1.Text;
+            IsSoloProject = bool.Parse(form.txtExtra2.Text);
         }
 
         public override void FillForm(Form1 form)
@@ -19,10 +20,10 @@ namespace Lab5.Models
             form.txtName.Text = Name;
             form.txtPrice.Text = Price.ToString();
             form.txtGenre.Text = Genre;
-            form.txtExtra1.Text = Studio;
-            form.txtExtra2.Text = TeamSize.ToString();
+            form.txtExtra1.Text = Developer;
+            form.txtExtra2.Text = IsSoloProject.ToString();
 
-            form.SetLabels("Studio:", "Team:");
+            form.SetLabels("Developer:", "Solo:");
         }
 
         public override string GetTypeName()

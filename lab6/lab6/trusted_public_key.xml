@@ -1,0 +1,10 @@
+<!--
+    Replace this file with the PUBLIC key XML produced by:
+        PluginSigner.exe genkeys <private.xml> <public.xml>
+    Then copy the resulting public.xml here. This file is loaded at runtime
+    and used to verify every plugin manifest.
+-->
+<RSAKeyValue>
+  <Modulus>REPLACE_ME</Modulus>
+  <Exponent>AQAB</Exponent>
+</RSAKeyValue>

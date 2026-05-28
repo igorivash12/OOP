@@ -55,13 +55,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPluginManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPluginManager.Designer.cs">
+      <DependentUpon>FormPluginManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\GameFactory.cs" />
     <Compile Include="Plugins\IGamePlugin.cs" />
-    <Compile Include="Plugins\IPersistencePlugin.cs" />
-    <Compile Include="SettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Plugins\IXmlPlugin.cs" />
+    <Compile Include="Plugins\XmlPluginManager.cs" />
     <Compile Include="Models\IndieGame.cs" />
     <Compile Include="Models\PCGame.cs" />
     <Compile Include="Models\MobileGame.cs" />
@@ -71,11 +75,8 @@
     <Compile Include="Models\VRGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\PersistencePipeline.cs" />
-    <Compile Include="Services\PersistencePluginLoader.cs" />
-    <Compile Include="Services\PersistencePluginRegistry.cs" />
+    <Compile Include="Services\JsonSerializer.cs" />
     <Compile Include="Services\PluginLoader.cs" />
-    <Compile Include="Services\XmlPersistenceService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

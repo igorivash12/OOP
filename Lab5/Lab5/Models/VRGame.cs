@@ -1,5 +1,6 @@
 namespace Lab5.Models
 {
+    /// <summary>Represents a virtual-reality game requiring a VR headset.</summary>
     public class VRGame : Game
     {
         public string VRDevice { get; set; }

@@ -1,17 +1,18 @@
 namespace Lab5.Models
 {
+    /// <summary>Represents a game released for mobile devices.</summary>
     public class MobileGame : Game
     {
-        public string OS { get; set; }
-        public bool HasAds { get; set; }
+        public string Platform { get; set; }
+        public bool HasInAppPurchases { get; set; }
 
         public override void FillFromForm(Form1 form)
         {
             Name = form.txtName.Text;
             Price = double.Parse(form.txtPrice.Text);
             Genre = form.txtGenre.Text;
-            OS = form.txtExtra1.Text;
-            HasAds = bool.Parse(form.txtExtra2.Text);
+            Platform = form.txtExtra1.Text;
+            HasInAppPurchases = bool.Parse(form.txtExtra2.Text);
         }
 
         public override void FillForm(Form1 form)
@@ -19,10 +20,10 @@ namespace Lab5.Models
             form.txtName.Text = Name;
             form.txtPrice.Text = Price.ToString();
             form.txtGenre.Text = Genre;
-            form.txtExtra1.Text = OS;
-            form.txtExtra2.Text = HasAds.ToString();
+            form.txtExtra1.Text = Platform;
+            form.txtExtra2.Text = HasInAppPurchases.ToString();
 
-            form.SetLabels("OS:", "Ads:");
+            form.SetLabels("Platform:", "In-App:");
         }
 
         public override string GetTypeName()

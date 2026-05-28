@@ -1,0 +1,29 @@
+# Build output directories
+bin/
+obj/
+
+# Visual Studio user-specific files
+.vs/
+*.user
+*.suo
+*.userprefs
+
+# NuGet package restore artifacts
+packages/
+*.nupkg
+
+# Compiled binary outputs
+*.exe
+*.dll
+*.pdb
+
+# Log and cache files
+*.log
+*.cache
+
+# Windows image thumbnails
+Thumbs.db
+Desktop.ini
+
+# macOS metadata
+.DS_Store
